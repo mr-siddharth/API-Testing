@@ -1,3 +1,5 @@
+import os
+
 HOSTS = {
     "test": "http://localhost:8888/wp-json/wc/v3/",
     "dev": "",
@@ -15,3 +17,32 @@ CONSUMER_SECRETS = {
     "dev": "",
     "prod": ""
 }
+
+DB_HOSTS = {
+    "test_hostname": "localhost",
+    "test_port": 8889,
+    "dev": "",
+    "prod": ""
+}
+
+DB_USERS = {
+    "test": "root",
+    "dev": "",
+    "prod": ""
+}
+
+DB_PASSWORDS = {
+    "test": "root",
+    "dev": "",
+    "prod": ""
+}
+
+def get_db_config():
+    env = os.environ.get('env')
+    config = {}
+    config['hostname'] = DB_HOSTS[f'{env}_hostname']
+    config['port'] = DB_HOSTS[f'{env}_port']
+    config['user'] = DB_USERS[env]
+    config['password'] = DB_PASSWORDS[env]
+
+    return config

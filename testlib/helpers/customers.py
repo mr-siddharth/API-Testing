@@ -1,4 +1,4 @@
-import testlib.requests as requests
+import testlib.api_requests as api
 
 endpoint = 'customers'
 
@@ -7,6 +7,6 @@ def create_customer(email, password, **kwargs):
     payload = {'email': email, 'password': password}
     payload.update(**kwargs)
 
-    response = requests.post(endpoint=endpoint, json=payload)
+    response = api.post(endpoint=endpoint, json=payload)
 
     return response
