@@ -17,5 +17,4 @@ def get_random_email(domain="gmail.com", prefix="testuser_"):
 
 def get_base_url():
     env = os.environ.get('ENV')
-    # Needs to be fixed:
-    return config.HOSTS['test']
+    return config.HOSTS[env]
