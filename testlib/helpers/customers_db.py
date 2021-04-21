@@ -16,7 +16,7 @@ def get_all_customers(email, limit=None):
 
 
 def get_all_customer_count():
-    return db.execute_select('SELECT COUNT(*) FROM wp_users')[0]
+    return db.execute_select('SELECT COUNT(*) FROM wp_users')[0]['COUNT(*)']
 
 
 def get_random_customer():

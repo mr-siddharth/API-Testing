@@ -12,12 +12,13 @@ class TestGetCustomer:
         customers_count_api = len(response.json())
 
         # Get the count of customers returned by DB
-        customers_count_db = customers_db.get_all_customer_count()['COUNT(*)'] - 1
+        customers_count_db = customers_db.get_all_customer_count() - 1
 
         assert customers_count_api == customers_count_db
 
 
-    def test_match_id_email_in_db_and_api(self):
+    def test_match_id_email_in_db_and_api(self, logger):
         cust_in_db = customers_db.get_random_customer()
+        logger.debug(f"Testing with user id:{cust_in_db['ID']}")
         cust_in_api = customers_api.get_customer_by_id(cust_in_db['ID']).json()
         assert cust_in_db['user_email'] == cust_in_api['email']
