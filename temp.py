@@ -1,8 +1,4 @@
-a = 5
+from testlib.helpers.customers_api import get_all_customers
 
-def func():
-    a = a + 1
-    print(a)
-
-func()
-print(a)
+result = get_all_customers()
+print(f'{len(result)}\n{result}')

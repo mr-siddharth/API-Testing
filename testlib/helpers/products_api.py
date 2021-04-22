@@ -4,9 +4,18 @@ endpoint = 'products'
 
 
 def get_all_products(expected_status=None, **kwargs):
-    response = api.get(endpoint=endpoint + '?per_page=100', expected_status=expected_status)
+    payload = {'per_page':'100'}
+    page = 1
+    result = []
+    while True:
+        payload['page'] = str(page)
+        response = api.get(endpoint=endpoint, json=payload, expected_status=expected_status).json()
+        result.extend(response)
+        if len(response) < int(payload['per_page']):
+            break;
+        page += 1
 
-    return response
+    return result
 
 def get_product_by_id(id, expected_status=None, **kwargs):
     response = api.get(endpoint=endpoint + f'/{id}', expected_status=expected_status)

@@ -154,3 +154,5 @@
 2021-04-21 18:05:53,636 - test_create_customer.py:test_cannot_create_customer_with_existing_email - DEBUG - Response Status: 400
 2021-04-21 18:05:53,636 - test_create_customer.py:test_cannot_create_customer_with_existing_email - DEBUG - Response Body:
 {"code":"registration-error-email-exists","message":"An account is already registered with your email address. <a href=\"#\" class=\"showlogin\">Please log in.<\/a>","data":{"status":400}}
+2021-04-22 13:47:36,792 - test_get_product.py:test_smoke_get_all_products_from_api - INFO - Number of Products returned: 30
+2021-04-22 13:47:36,802 - test_get_product.py:test_match_id_email_in_db_and_api - DEBUG - Testing with product id:89

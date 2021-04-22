@@ -9,7 +9,7 @@ class TestGetCustomer:
     def test_count_all_customers(self):
         # Get the count of customers returned by API
         response = customers_api.get_all_customers()
-        customers_count_api = len(response.json())
+        customers_count_api = len(response)
 
         # Get the count of customers returned by DB
         customers_count_db = customers_db.get_all_customer_count() - 1

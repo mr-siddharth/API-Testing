@@ -9,9 +9,7 @@ class TestGetProduct:
 
     @pytest.mark.smoke
     def test_smoke_get_all_products_from_api(self, logger):
-        response = products_api.get_all_products()
-        assert response.status_code == 200
-        response = response.json()
+        response = products_api.get_all_products(expected_status=200)
         logger.info(f"Number of Products returned: {len(response)}")
         assert len(response) > 0
 
