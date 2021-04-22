@@ -27,6 +27,6 @@ def get_random_product():
     )[0]
 
 def get_product_price(id):
-    return db.execute_select(
+    return float(db.execute_select(
         f'SELECT min_price FROM wp_wc_product_meta_lookup WHERE product_id = {id}'
-    )[0]['min_price']
+    )[0]['min_price'])

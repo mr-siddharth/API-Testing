@@ -17,15 +17,32 @@ def get_all_products(expected_status=None, **kwargs):
 
     return result
 
+
 def get_product_by_id(id, expected_status=None, **kwargs):
     response = api.get(endpoint=endpoint + f'/{id}', expected_status=expected_status)
 
     return response
+
 
 def create_product(name, expected_status=None, **kwargs):
     payload = {'name': name}
     payload.update(**kwargs)
 
     response = api.post(endpoint=endpoint, json=payload, expected_status=expected_status)
+
+    return response
+
+
+def update_product(id, expected_status=None, **kwargs):
+    payload = {}
+    payload.update(**kwargs)
+
+    response = api.put(endpoint=endpoint + f'/{id}', json=payload, expected_status=expected_status)
+
+    return response
+
+def delete_product(id, expected_status=None):
+    payload = {"force": "true"}
+    response = api.delete(endpoint=endpoint + f'/{id}', json=payload, expected_status=expected_status)
 
     return response
