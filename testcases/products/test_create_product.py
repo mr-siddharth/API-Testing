@@ -3,6 +3,7 @@ import testlib.helpers.products_api as products_api
 from testlib.helpers import products_db
 from testlib import lib
 
+@pytest.mark.smoke
 class TestSmokeCreateProduct:
 
     name = 'Test Product ' + lib.get_random_string()

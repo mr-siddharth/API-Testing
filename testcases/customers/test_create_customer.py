@@ -3,8 +3,9 @@ import testlib.helpers.customers_api as customers
 from testlib.helpers import customers_db
 from testlib import lib
 
-class TestSmokeCreateCustomer:
 
+@pytest.mark.smoke
+class TestSmokeCreateCustomer:
     email = lib.get_random_email()
     password = lib.get_random_string()
 
@@ -18,7 +19,7 @@ class TestSmokeCreateCustomer:
 
     def test_api_response(self, response, logger):
         assert response['email'] == self.email, f'Create customer api returned wrong email. ' + \
-                                           f"Expected Email: {self.email}. Email returned: {response['email']}"
+                                                f"Expected Email: {self.email}. Email returned: {response['email']}"
         assert response['first_name'] == ''
 
         logger.info(f"Success: Creating customer with email id: {self.email}")
@@ -34,9 +35,9 @@ class TestSmokeCreateCustomer:
         assert id_in_api == id_in_db, "ID mismatch between api and database"
 
 
-@pytest.mark.tcid47
+@pytest.mark.smoke
 def test_cannot_create_customer_with_existing_email(logger):
-    #Create a customer with non-existing email
+    # Create a customer with non-existing email
     email = lib.get_random_email()
     password = lib.get_random_string()
     logger.info(f"Creating customer with email id: {email}")

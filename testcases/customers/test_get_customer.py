@@ -5,8 +5,6 @@ from testlib import lib
 
 class TestGetCustomer:
 
-    @pytest.mark.tcid30
-    @pytest.mark.xfail
     def test_count_all_customers(self):
         # Get the count of customers returned by API
         response = customers_api.get_all_customers()

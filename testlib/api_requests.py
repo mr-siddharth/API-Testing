@@ -1,5 +1,5 @@
 import requests
-import json
+# import json
 import testlib.lib
 from requests_oauthlib import OAuth1
 import config.config as config
@@ -7,7 +7,8 @@ import config.config as config
 
 def post(endpoint, json, expected_status=None, **kwargs):
     baseurl = testlib.lib.get_base_url()
-    auth = OAuth1(config.CONSUMER_KEYS['test'], config.CONSUMER_SECRETS['test'])
+    env = testlib.lib.get_env()
+    auth = OAuth1(config.CONSUMER_KEYS[env], config.CONSUMER_SECRETS[env])
     response = requests.post(baseurl + endpoint, json=json, timeout=10, auth=auth, **kwargs)
 
     if expected_status is not None:
@@ -22,7 +23,8 @@ def post(endpoint, json, expected_status=None, **kwargs):
 
 def get(endpoint, json=None, expected_status=None, **kwargs):
     baseurl = testlib.lib.get_base_url()
-    auth = OAuth1(config.CONSUMER_KEYS['test'], config.CONSUMER_SECRETS['test'])
+    env = testlib.lib.get_env()
+    auth = OAuth1(config.CONSUMER_KEYS[env], config.CONSUMER_SECRETS[env])
     response = requests.get(baseurl + endpoint, json=json, timeout=10, auth=auth, **kwargs)
 
     if expected_status is not None:
@@ -36,7 +38,8 @@ def get(endpoint, json=None, expected_status=None, **kwargs):
 
 def put(endpoint, json, expected_status=None, **kwargs):
     baseurl = testlib.lib.get_base_url()
-    auth = OAuth1(config.CONSUMER_KEYS['test'], config.CONSUMER_SECRETS['test'])
+    env = testlib.lib.get_env()
+    auth = OAuth1(config.CONSUMER_KEYS[env], config.CONSUMER_SECRETS[env])
     response = requests.put(baseurl + endpoint, json=json, timeout=10, auth=auth, **kwargs)
 
     if expected_status is not None:
@@ -51,7 +54,8 @@ def put(endpoint, json, expected_status=None, **kwargs):
 
 def delete(endpoint, json=None, expected_status=None, **kwargs):
     baseurl = testlib.lib.get_base_url()
-    auth = OAuth1(config.CONSUMER_KEYS['test'], config.CONSUMER_SECRETS['test'])
+    env = testlib.lib.get_env()
+    auth = OAuth1(config.CONSUMER_KEYS[env], config.CONSUMER_SECRETS[env])
     response = requests.delete(baseurl + endpoint, json=json, timeout=10, auth=auth, **kwargs)
 
     if expected_status is not None:
